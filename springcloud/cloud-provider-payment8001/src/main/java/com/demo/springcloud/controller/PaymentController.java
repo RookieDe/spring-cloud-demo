@@ -70,4 +70,9 @@ public class PaymentController {
 
         return this.discoveryClient;
     }
+
+    @GetMapping(value = "/payment/get/lb")
+    public String getPaymentLb(){
+        return "这个式8001返回的信息:"+serverPort;
+    }
 }

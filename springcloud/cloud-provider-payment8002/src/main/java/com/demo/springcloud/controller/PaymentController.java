@@ -47,4 +47,9 @@ public class PaymentController {
             return new CommonResult<>(500,"没有对应记录，查询id："+id,null);
         }
     }
+
+    @GetMapping(value = "/payment/get/lb")
+    public String getPaymentLb(){
+        return "这个式8002返回的信息:"+serverPort;
+    }
 }
