@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author hongde
  * @version 1.0.0
@@ -51,5 +53,15 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/lb")
     public String getPaymentLb(){
         return "这个式8002返回的信息:"+serverPort;
+    }
+
+    @GetMapping(value = "/payment/get/timeout")
+    public String getTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "这个是超时8002返回的信息:"+serverPort;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hongde
@@ -74,5 +75,15 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/lb")
     public String getPaymentLb(){
         return "这个式8001返回的信息:"+serverPort;
+    }
+
+    @GetMapping(value = "/payment/get/timeout")
+    public String getTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "这个是超时8001返回的信息:"+serverPort;
     }
 }
